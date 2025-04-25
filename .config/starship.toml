@@ -2,8 +2,8 @@
 #"$schema" = 'https://starship.rs/config-schema.json'
 
 format = """
-[│](bold purple) $username
-[└─>](bold purple) $directory$git_branch$git_commit"""
+[│](bold purple) $username$directory$git_branch$git_commit
+[└─>](bold purple) """
 # Inserts a blank line between shell prompts
 add_newline = true
 
