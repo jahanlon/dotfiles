@@ -128,8 +128,6 @@ complete -C aws_completer aws
 ## Spotify Rice
 export PATH=$PATH:/home/jeri/.spicetify
 
-## Start SSH agent with keys (def in aliases)
-ssha
 ##-----------------------------------------------------
 ## synth-shell-prompt.sh
 #if [ -f /home/jeri/.config/synth-shell/synth-shell-prompt.sh ] && [ -n "$( echo $- | grep i )" ]; then

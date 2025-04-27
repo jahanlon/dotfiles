@@ -31,3 +31,5 @@ eval "$(gh completion -s bash)"
 export PATH=$PATH:/home/jeri/.spicetify
 export MOZ_LOG="PlatformDecoderModule:5"
 
+# SSH agent
+alias ssha='eval $(ssh-agent) 1>/dev/null'

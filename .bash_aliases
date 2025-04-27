@@ -5,8 +5,6 @@ alias pls='sudo'
 alias rmr='rm -r -I'
 alias sdu='sudo dnf update'
 
-# SSH agent
-alias ssha='eval $(ssh-agent) 1>/dev/null'
 
 # Monitors
 alias monitoroff='xrandr --output DisplayPort-1 --off'
