@@ -23,3 +23,6 @@ mcd()
 {
     test -d "$1" || mkdir -p "$1" && cd "$1"
 }
+ rmlnk(){
+   rm -rI $(readlink -f "$1") $1
+ }
