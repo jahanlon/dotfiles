@@ -5,6 +5,18 @@ return{
     config = function()
         local tele = require("telescope.builtin")
         require("telescope").setup {
+            defaults = {
+              vimgrep_arguments = {
+                "rg",
+                "--color=never",
+                "--no-heading",
+                "--with-filename",
+                "--line-number",
+                "--column",
+                "--smart-case",
+                "-L"}
+              },
+
              pickers = {
                 find_files = {
                  follow = true,
