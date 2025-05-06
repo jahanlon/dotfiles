@@ -152,12 +152,10 @@ if [ -f /home/jeri/.config/synth-shell/better-history.sh ] && [ -n "$( echo $- |
 	source /home/jeri/.config/synth-shell/better-history.sh
 fi
 
-
 ##------------------------------------------
 ## starship prompt
 if [ -f /usr/local/bin/starship ]; then
 	eval "$(starship init bash)"
 fi
-
 
 complete -C /usr/bin/terraform terraform
