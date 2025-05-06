@@ -13,6 +13,7 @@ alias monitoron='xrandr --output DisplayPort-0 --primary --mode 3440x1440 --rate
 ## Git aliases
 alias gitlog='/usr/bin/git log --abbrev-commit'
 alias gpom='/usr/bin/git push origin main'
+alias gcomm="git commit -m "$1""
 
 #redshift
 alias dayshift='redshift -PO 6500 1>/dev/null'
