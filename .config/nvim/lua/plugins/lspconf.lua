@@ -25,25 +25,7 @@ return {
     end
   },
   {
-    "hrsh7th/nvim-cmp",
-    config = function()
-      require("cmp").setup({
-        completion = {
-          autocomplete = { require("cmp.types").cmp.TriggerEvent.TextChanged },
-        },
-        mapping = require("cmp").mapping.preset.insert({
-          ['<CR>'] = require("cmp").mapping.confirm({ select = true }),
-        }),
-        sources = {
-          { name = "nvim_lsp" },
-          { name = "buffer" },
-        },
-      })
-    end
-  },
-  {
     "neovim/nvim-lspconfig",
-    dependencies = {'saghen/blink.cmp'},
 
     config = function()
 
@@ -60,7 +42,20 @@ return {
     version = '1.*',
 
     config = function()
-      require("blink.cmp").setup()
+      require("blink.cmp").setup({
+        keymap = {
+
+          preset = 'default',
+          ['<Tab>']   = {'accept'},
+          ['<Up>']    = { 'select_prev', 'fallback' },
+          ['<Down>']  = { 'select_next', 'fallback' },
+          ['<C-s>']   = {'show_documentation'},
+        },
+
+        completion = { documentation = { auto_show =true }},
+
+        sources = { default = { 'lsp', 'path', 'snippets', 'buffer' }},
+      })
     end
   }
 }
