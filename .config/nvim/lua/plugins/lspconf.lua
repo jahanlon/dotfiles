@@ -49,7 +49,7 @@ return {
           ['<Tab>']   = {'accept'},
           ['<Up>']    = { 'select_prev', 'fallback' },
           ['<Down>']  = { 'select_next', 'fallback' },
-          ['<C-s>']   = {'show_documentation'},
+          ['<C-s>']   = { 'show_documentation', 'hide_documentation'},
         },
 
         completion = { documentation = { auto_show =true }},
