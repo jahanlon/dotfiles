@@ -10,3 +10,17 @@ ls $BACKGROUNDS | sort -R | tail -n 1 | while read file; do
    echo "preload = $PICPATH" > $HOME/.config/hypr/hyprpaper.conf
    echo "wallpaper = , $PICPATH" >> $HOME/.config/hypr/hyprpaper.conf
 done
+
+pidof hyprpaper > /dev/null
+if [ $? -eq 0 ]; then
+  killall hyprpaper 
+  hyprpaper 2>&1 > /dev/null & disown 
+fi
+
+if  pidof waybar ; then
+  killall waybar 
+fi
+
+waybar  2>&1 > /dev/null &
+
+cp $HOME/.cache/wal/colors-waybar.css $HOME/.config/waybar/

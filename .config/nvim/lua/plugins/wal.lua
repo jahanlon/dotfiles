@@ -3,6 +3,6 @@ return {
   transparent_background = true,
 
   config = function ()
-    require("pywal").setup()
+--    require("pywal").setup()
   end
 }
