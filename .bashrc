@@ -159,3 +159,4 @@ if [ -f /usr/local/bin/starship ]; then
 fi
 
 complete -C /usr/bin/terraform terraform
+(cat $HOME/.cache/wal/sequences &)
