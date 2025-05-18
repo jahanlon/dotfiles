@@ -5,7 +5,7 @@ BACKGROUNDS="$HOME/Pictures/Backgrounds/"
 
 ls $BACKGROUNDS | sort -R | tail -n 1 | while read file; do
    PICPATH="${BACKGROUNDS}${file}"
-   wal -i "$BACKGROUNDS/${file}" 2>&1 > /dev/null
+   wal -i "$BACKGROUNDS/${file}" > /dev/null 2>&1
 
    echo "preload = $PICPATH" > $HOME/.config/hypr/hyprpaper.conf
    echo "wallpaper = , $PICPATH" >> $HOME/.config/hypr/hyprpaper.conf
@@ -19,10 +19,10 @@ fi
 
 pidof waybar > /dev/null
 
-if [ $? -eq 0 ] ; then
-  killall waybar > /dev/null 2>&1
-fi
-
-nohup waybar > /dev/null 2>&1 & disown 
+#if [ $? -eq 0 ] ; then
+#  killall waybar > /dev/null 2>&1
+#fi
+#
+#nohup waybar > /dev/null 2>&1 & disown 
 
 cp $HOME/.cache/wal/colors-waybar.css $HOME/.config/waybar/
