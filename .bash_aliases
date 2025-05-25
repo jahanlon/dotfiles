@@ -19,6 +19,7 @@ alias gcomm="git commit -m "$1""
 alias dayshift='redshift -PO 6500 1>/dev/null'
 alias nightshift='redshift -PO 3800 1>/dev/null' 
 
+alias vim='nvim'
 # Make dir then cd to it
 mcd()
 {

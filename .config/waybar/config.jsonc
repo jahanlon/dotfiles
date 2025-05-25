@@ -20,7 +20,7 @@
     "modules-right": [
       "mpris",
       "load",
-      "wireplumber",
+      "pulseaudio",
       "clock",
       "tray"
     ],
