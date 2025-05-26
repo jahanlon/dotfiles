@@ -7,6 +7,7 @@ apps=(
   "curl"
 )
 
+cd $HOME
 sudo dnf install -y dnf-plugins-core
 sudo dnf config-manager addrepo --from-repofile=https://rpm.releases.hashicorp.com/fedora/hashicorp.repo
 sudo dnf update -y
@@ -14,36 +15,35 @@ sudo dnf install -y "${apps[@]}"
 
 ## Starship terminal ##
 if [[ ! -f /usr/local/sbin/starship ]]; then
-  curl -sS https://starship.rs/install.sh | sh
+  sudo curl -sS https://starship.rs/install.sh | sh -s -- -y
 fi
 ## Setup AWS CLI ##
 
-pushd $HOME/Downloads
 curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
 unzip awscliv2.zip
 sudo ./aws/install
-popd
+rm -rf ./aws*
 
-
-if [[ ! -f $HOME/.aws/credentials ]]; then
-  cat << EOF > $HOME/.aws/credentials
+cat << EOF >> $HOME/.aws/credentials
   [default]
   aws_access_key_id=
   aws_secret_access_key=
-  EOF
-fi
+EOF
 
-if [[ ! -f $HOME/.aws/config ]]; then
-  cat << EOF > $HOME/.aws/config
+cat << EOF >> $HOME/.aws/config
   [default]
   region=eu-west-2
   output=json
-  EOF
-fi
+EOF
 
-###########################
+## DNF ##
 if ! grep -qi defaultyes /etc/dnf/dnf.conf; then
-  echo "defaultyes=True" >> /etc/dnf/dnf.conf
+  sudo echo "defaultyes=True" >> /etc/dnf/dnf.conf
 fi
 
-
+## Git config ##
+cat << EOF >> $HOME/.gitconfig
+  [user]
+  name = Jeri Hanlon
+  email = 5843970+jahanlon@users.noreply.github.com
+EOF
