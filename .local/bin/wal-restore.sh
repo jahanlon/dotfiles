@@ -17,12 +17,8 @@ if [ $? -eq 0 ]; then
   hyprpaper 2>&1 > /dev/null & disown 
 fi
 
-pidof waybar > /dev/null
-
-#if [ $? -eq 0 ] ; then
-#  killall waybar > /dev/null 2>&1
-#fi
-#
-#nohup waybar > /dev/null 2>&1 & disown 
-
 cp $HOME/.cache/wal/colors-waybar.css $HOME/.config/waybar/
+
+killall waybar
+hyprctl dispatch exec waybar
+
