@@ -1,3 +1,4 @@
+USER_HOME=$(getent passwd $SUDO_USER | cut -d: -f6)
 apps=(
   "terraform"
   "gh"
@@ -7,7 +8,7 @@ apps=(
   "stow"
 )
 
-cd $HOME
+cd $USER_HOME
 sudo dnf install -y dnf-plugins-core
 sudo dnf config-manager addrepo --from-repofile=https://rpm.releases.hashicorp.com/fedora/hashicorp.repo
 sudo dnf update -y
@@ -24,19 +25,20 @@ unzip awscliv2.zip
 sudo ./aws/install
 rm -rf ./aws*
 
-if [[ ! -f $HOME/.aws/credentials ]]; then
-  touch $HOME/.aws/credentials
+if [[ ! -f $USER_HOME/.aws/ ]]; then
+  mkdir $USER_HOME/.aws
+  touch $USER_HOME/.aws/credentials
 fi
-cat << EOF >> $HOME/.aws/credentials
+cat << EOF >> $USER_HOME/.aws/credentials
   [default]
   aws_access_key_id=
   aws_secret_access_key=
 EOF
 
-if [[ ! -f $HOME/.aws/config ]]; then
-  touch $HOME/.aws/config
+if [[ ! -f $USER_HOME/.aws/config ]]; then
+  touch $USER_HOME/.aws/config
 fi
-cat << EOF >> $HOME/.aws/config
+cat << EOF >> $USER_HOME/.aws/config
   [default]
   region=eu-west-2
   output=json
@@ -48,16 +50,16 @@ if ! grep -qi defaultyes /etc/dnf/dnf.conf; then
 fi
 
 ## Git config ##
-if [[ ! -f $HOME/.gitconfig ]]; then
-  touch $HOME/.gitconfig
+if [[ ! -f $USER_HOME/.gitconfig ]]; then
+  touch $USER_HOME/.gitconfig
 fi
-cat << EOF >> $HOME/.gitconfig
+cat << EOF >> $USER_HOME/.gitconfig
   [user]
   name = Jeri Hanlon
   email = 5843970+jahanlon@users.noreply.github.com
 EOF
 
 ## stow files ##
-cd $HOME/dotfiles
+cd $USER_HOME/dotfiles
 stow --adopt .
 git reset --hard
