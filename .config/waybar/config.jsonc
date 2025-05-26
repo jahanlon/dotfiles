@@ -134,6 +134,14 @@
         ""
       ]
     },
+    "pulseaudio": {
+      "format": "{icon} {volume}%",
+      "format-muted": "",
+      "format-bluetooth": "{icon} {volume}% ",
+      "format-bluetooth-muted": " {icon}",
+      "on-click": "bash ~/.config/waybar/scripts/audio-switch.sh",
+      "on-click-right": "bash ~/.config/waybar/scripts/audio-mute.sh"
+    },
     "wireplumber": {
       "scroll-step": 5, // %, can be a float
       "format": "{icon} {volume}%",
