@@ -2,9 +2,9 @@ apps=(
   "terraform"
   "gh"
   "nvim"
-  "vlc"
-  "firefox"
   "curl"
+  "flatpak"
+  "stow"
 )
 
 cd $HOME
@@ -24,12 +24,18 @@ unzip awscliv2.zip
 sudo ./aws/install
 rm -rf ./aws*
 
+if [[ ! -f $HOME/.aws/credentials ]]; then
+  touch $HOME/.aws/credentials
+fi
 cat << EOF >> $HOME/.aws/credentials
   [default]
   aws_access_key_id=
   aws_secret_access_key=
 EOF
 
+if [[ ! -f $HOME/.aws/config ]]; then
+  touch $HOME/.aws/config
+fi
 cat << EOF >> $HOME/.aws/config
   [default]
   region=eu-west-2
@@ -42,8 +48,16 @@ if ! grep -qi defaultyes /etc/dnf/dnf.conf; then
 fi
 
 ## Git config ##
+if [[ ! -f $HOME/.gitconfig ]]; then
+  touch $HOME/.gitconfig
+fi
 cat << EOF >> $HOME/.gitconfig
   [user]
   name = Jeri Hanlon
   email = 5843970+jahanlon@users.noreply.github.com
 EOF
+
+## stow files ##
+cd $HOME/dotfiles
+stow --adopt .
+git reset --hard
