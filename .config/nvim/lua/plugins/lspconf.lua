@@ -47,8 +47,8 @@ return {
 
           preset = 'default',
           ['<C-y>']   = {'accept'},
-          ['<Up>']    = { 'select_prev', 'fallback' },
-          ['<Down>']  = { 'select_next', 'fallback' },
+          ['<C-u>']    = { 'select_prev', 'fallback' },
+          ['<C-h>']  = { 'select_next', 'fallback' },
           ['<C-s>']   = { 'show_documentation', 'hide_documentation'},
         },
 
